@@ -1,9 +1,9 @@
 Tech test voor een software bedrijf:
 
-Resultaat:
-Invalid data line - skipping line(s): Timestamp,Location,Charger_ID,Connector_ID,Charging_Status
+Resultaat:<br>
+Invalid data line - skipping line(s): Timestamp,Location,Charger_ID,Connector_ID,Charging_Status<br>
 
-=== Summary of charger status ===
+=== Summary of charger status === <br>
 Combined status:
 SUSPENDEDEV: 73
 OFFLINE: 14
