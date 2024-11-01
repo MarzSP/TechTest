@@ -19,6 +19,8 @@ ARNHEM:<br>
   Charging cycles: 76<br>
   % Time functioning: 84,95%<br>
   % Occupancy rate: 40,86%<br>
+  <br>
+  
 EINDHOVEN:<br>
   SUSPENDEDEV: 45<br>
   OFFLINE: 9<br>
