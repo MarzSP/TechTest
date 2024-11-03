@@ -101,7 +101,7 @@ public class ChargerDataProcessor {
         System.out.printf("    %% Time functioning: %.2f%%\n", functioningRate);
         System.out.printf("    %% Time offline: %.2f%%\n", offlineRate);
         System.out.printf("    %% Time suspended: %.2f%%\n", suspendedRate);
-        System.out.printf("    %% Occupancy rate: %.2f%%\n", occupancyRate);
+        System.out.printf("    %% Time user spent in charging state: %.2f%%\n", occupancyRate);
     }
 
 
