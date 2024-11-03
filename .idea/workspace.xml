@@ -9,6 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a3ea3ba4-0318-491a-9077-91cf2bd40021" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChargerDataProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ChargerDataProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,19 +76,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="TechTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="TechTest" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ChargerAnalysis" />
@@ -114,7 +102,9 @@
       <workItem from="1730472849425" duration="257000" />
       <workItem from="1730473118623" duration="28000" />
       <workItem from="1730473153871" duration="5959000" />
-      <workItem from="1730631823416" duration="3078000" />
+      <workItem from="1730631823416" duration="3096000" />
+      <workItem from="1730646283768" duration="17000" />
+      <workItem from="1730646760510" duration="513000" />
     </task>
     <task id="LOCAL-00001" summary="added calc for %time suspended">
       <option name="closed" value="true" />
@@ -140,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730634279556</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="split out to methods">
+      <option name="closed" value="true" />
+      <created>1730646240166</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730646240166</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

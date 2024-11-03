@@ -42,23 +42,28 @@ public class ChargerDataProcessor {
                     String charger = values[2].trim(); // ChargerID als String
                     ChargerAnalysis.Status status = ChargerAnalysis.Status.valueOf(values[4].trim().toUpperCase());
 
-                    // Data per locatie en chargerID
+                    // Initializatie van datastructuur
                     locationChargerStatusCount.putIfAbsent(location, new HashMap<>());
                     locationChargerStatusCount.get(location).putIfAbsent(charger, initializeStatusCount());
-                    locationChargerStatusCount.get(location).get(charger).merge(status, 1, Integer::sum);
 
-                    // Onlinetijd bijwerken
-                    if (status != ChargerAnalysis.Status.OFFLINE) {
-                        totalTimeOnline.merge(charger, 1, Integer::sum);
-                    }
+                    // Elke status wordt geteld per charger
+                    Map<ChargerAnalysis.Status, Integer> statusMap = locationChargerStatusCount.get(location).get(charger);
+                    statusMap.merge(status, 1, Integer::sum);
 
-                    // Aantal charging cycles bijwerken
-                    if (prevCharger != null && prevCharger.equals(charger) && prevStatus == ChargerAnalysis.Status.AVAILABLE && status == ChargerAnalysis.Status.CHARGING) {
+                    // Update totaal online tijd per charger
+                    totalTimeOnline.merge(charger, 1, Integer::sum);
+
+                    // Update aantal laadcycli per charger
+                    if (prevCharger != null && prevCharger.equals(charger)
+                            && prevStatus == ChargerAnalysis.Status.AVAILABLE
+                            && status == ChargerAnalysis.Status.CHARGING) {
                         chargingCycles.merge(charger, 1, Integer::sum);
                     }
 
+                    // Zet de huidige charger en status als vorige voor volgende iteratie
                     prevCharger = charger;
                     prevStatus = status;
+
                 } catch (IllegalArgumentException e) {
                     System.out.println("Invalid data line - skipping line(s): " + line);
                 }
@@ -67,6 +72,7 @@ public class ChargerDataProcessor {
             System.err.println("Error reading file: " + e.getMessage());
         }
     }
+
 
     public void printSummary() {
         System.out.println("\n=== Summary of charger status ===");
@@ -79,7 +85,8 @@ public class ChargerDataProcessor {
     }
 
     private void printChargerSummary(String charger, Map<ChargerAnalysis.Status, Integer> statusMap) {
-        int totalOnline = totalTimeOnline.getOrDefault(charger, 0);
+        // Calculeer totaal online tijd en offline aantal
+        int totalOnline = statusMap.values().stream().mapToInt(Integer::intValue).sum();
         int offlineCount = statusMap.getOrDefault(ChargerAnalysis.Status.OFFLINE, 0);
 
         double offlineRate = calculatePercentage(offlineCount, totalOnline);
@@ -94,7 +101,7 @@ public class ChargerDataProcessor {
     }
 
     private void printStatusSummary(Map<ChargerAnalysis.Status, Integer> statusMap) {
-        statusMap.forEach((status, count) -> System.out.println("    " + status + ": " + count));
+        statusMap.forEach((status, count) -> System.out.println("  Total amount " + status + " this year: " + count));
     }
 
     private void printRates(double functioningRate, double offlineRate, double suspendedRate, double occupancyRate) {
@@ -104,8 +111,8 @@ public class ChargerDataProcessor {
         System.out.printf("    %% Time user spent in charging state: %.2f%%\n", occupancyRate);
     }
 
-
     private double calculatePercentage(int part, int total) {
         return total == 0 ? 0 : (double) part / total * 100;
     }
 }
+
