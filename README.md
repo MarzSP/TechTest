@@ -19,7 +19,7 @@ EINDHOVEN:<br>
     % Time user spent in charging state: 41,27%<br><br>
   Charger B:<br>
   Total amount AVAILABLE this year: 50<br>
-  Total amount CHARGING this year: 45<br>
+  Total amount CHARGING this year: 45<br><br>
 
 EINDHOVEN:<br>
     % Time functioning: 76,00%<br>
